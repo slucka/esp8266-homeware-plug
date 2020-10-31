@@ -10,9 +10,7 @@
 #include "config.h"
 #include "api_utils.hpp"
 #include "server_utils.hpp"
-//#include "websockets_utils.hpp"
 #include "wifi_utils.hpp"
-//#include "ESP8266_Utils_AWS.hpp"
 
 //Objects
 WiFiClient espClient;
@@ -21,10 +19,7 @@ PubSubClient client(espClient);
 //General
 
 #define PIN_RELE (D7)
-//#define MSG_BUFFER_SIZE (50)
 
-//unsigned long lastMsg = 0;
-//char msg[MSG_BUFFER_SIZE];
 
 String json_s = "";
 char json_c[200];
@@ -33,34 +28,9 @@ char deviceMode[30];
 bool onOffValue = false;
 
 long int tempUpdateTimeStamp = 0;
-//char requestA[100] = "{\"id\":\"oblap001\",\"param\":\"on\",\"value\":";
-//char requestB[50] = ",\"intent\":\"request\"}";
-//char request[300];
+
 char msg[300];
 
-// void setup_wifi()
-// {
-
-//   // We start by connecting to a WiFi network
-//   Serial.println();
-//   Serial.print("Connecting to ");
-//   Serial.println(ssid);
-//   WiFi.begin(ssid, password);
-
-//   while (WiFi.status() != WL_CONNECTED)
-//   {
-//     Serial.print(".");
-//     delay(1000);
-//   }
-
-//   randomSeed(micros());
-
-//   Serial.println("");
-//   Serial.println("WiFi connected");
-//   Serial.println("IP address: ");
-//   Serial.println(WiFi.localIP());
-//   delay(2000);
-// }
 
 void callback(char *topic, byte *payload, unsigned int length)
 {
@@ -171,12 +141,6 @@ void setup()
         Serial.print("config_deviceid:'");
         Serial.print(config_deviceid);
         Serial.println("'");
-        //Serial.print("config_ssid:");
-        //Serial.println(config_ssid);
-        //Serial.print("config_password:");
-        //Serial.println(config_password);
-        //Serial.print("config_mqtt_server:");
-        //Serial.println(config_mqtt_server);
       }
     }
 
@@ -192,8 +156,6 @@ void setup()
     Serial.println("Init PubSubClient");
 
     client.setServer(config_mqtt_server.c_str(), 1883);
-    // const char *mqtt_server = "192.168.1.107";
-    // client.setServer(mqtt_server, 1883);
     client.setCallback(callback);
 
     pinMode(PIN_RELE, OUTPUT);
@@ -230,14 +192,6 @@ void loop()
       {
         char onOffValueBuf[5];
         sprintf(onOffValueBuf, "%s", onOffValue ? "true" : "false");
-
-        // strcpy(request, requestA);
-        // strcat(request, onOffValueBuf);
-        // strcat(request, requestB);
-        // //Sernd the request
-        // client.publish("device/control", request);
-        // Serial.println(request);
-
         strcpy(msg, "{\"id\":\"");
         strcat(msg, config_deviceid.c_str());
         strcat(msg, "\",\"param\":\"on\",\"value\":");
