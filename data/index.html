@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Smart Oblap - Config</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+
+<style>
+
+{
+	box-sizing: border-box;
+}
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+	font-family: monospace;
+	background-color: silver;
+}
+
+
+.row
+{
+	display: inline-flex;
+	clear: both;
+}
+
+/* .columnLateral
+{
+  float: left;
+  --width: 15%;
+  --min-width: 350px;
+}
+.columnCetral
+{
+  float: left;
+  width: 10%;
+  --min-width: 300px;
+} */
+
+/* #joySpeed
+{
+	border: 1px solid #FF0000;
+}
+#joyDir
+{
+	border: 1px solid #0000FF;
+} */
+
+
+
+</style>
+
+<script>
+</script>
+</head>
+<body>
+
+
+<div>
+
+	<table>
+		<tr>
+			<td><label for="txtDeviceId">Device ID:</label></td>
+			<td><input type="text" id="txtDeviceId" name="txtDeviceId"/></td>
+		</tr>
+		<tr>
+			<td><label for="txtSSID">SSID:</label></td>
+			<td><input type="text" id="txtSSID" name="txtSSID"/></td>
+		</tr>
+		<tr>
+			<td><label for="txtPass">Pasword:</label></td>
+			<td><input type="password" id="txtPass" name="txtPass"/></td>
+		</tr>
+		<tr>
+			<td><label for="txtMqttServer">MQTT Server:</label></td>
+			<td><input type="text" id="txtMqttServer" name="txtMqttServer"/></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align: center;">
+				<input type="button" id="btnSave" name="btnSave" value="Save" />
+				<input type="button" id="btnReset" name="btnReset" value="Reset" />
+			</td>
+		</tr>
+	</table>
+
+</div>
+
+
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>
+
+</body>
+</html>
+
